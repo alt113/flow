@@ -73,7 +73,7 @@ class TraCIVehicle(KernelVehicle):
 
         # list of observations to monitor
         self.monitored_observations = []
-        if observation_list:
+        if observation_list is not None:
             for _ in observation_list:
                 self.monitored_observations.append(_)
 
@@ -313,7 +313,7 @@ class TraCIVehicle(KernelVehicle):
             Let C = custom observations ; C' = regular observations
             Let R = monitor only RL ; R' = monitor all cars
         '''
-        if self.monitored_observations:
+        if len(self.monitored_observations) > 0:
             if self.monitor_rl_vehicles:
                 '''
                     This is the case of C + R = Monitor custom

@@ -75,7 +75,7 @@ class WaveAttenuationMergePOEnv(Env):
                  sim_params,
                  scenario,
                  simulator='traci',
-                 observed_list=None):
+                 observed_list=list()):
 
         for p in ADDITIONAL_ENV_PARAMS.keys():
             if p not in env_params.additional_params:

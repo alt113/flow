@@ -102,8 +102,8 @@ class Env(*classdef):
                  env_params,
                  sim_params,
                  scenario,
-                 observation_list=None,
                  simulator='traci',
+                 observation_list=None,
                  monitor_rl=False):
         """Initialize the environment class.
 
@@ -163,7 +163,7 @@ class Env(*classdef):
         replace all readable equivalent tags
         with Traci equivalent parameters
         """
-        if observation_list:
+        if observation_list is not None:
             observation_list = [x.lower() for x in observation_list]
 
             for index, elem in enumerate(observation_list):
@@ -186,11 +186,12 @@ class Env(*classdef):
 
         # create the Flow kernel
             self.k = Kernel(simulator=self.simulator,
-                            sim_params=sim_params,
-                            observation_list=observation_list)
+                            sim_params=self.sim_params,
+                            observation_list=observation_list,
+                            monitor_rl=monitor_rl)
         else:
-            self.k = Kernel(simulator=self.simulator,
-                            sim_params=sim_params)
+            self.k = Kernel(self.simulator,
+                            self.sim_params)
 
         # use the scenario class's network parameters to generate the necessary
         # scenario components within the scenario kernel

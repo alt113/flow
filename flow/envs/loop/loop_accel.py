@@ -61,7 +61,8 @@ class AccelEnv(Env):
                  sim_params,
                  scenario,
                  simulator='traci',
-                 observation_list=None):
+                 observation_list=None,
+                 monitor_rl=False):
 
         for p in ADDITIONAL_ENV_PARAMS.keys():
             if p not in env_params.additional_params:
@@ -77,7 +78,8 @@ class AccelEnv(Env):
                          sim_params=sim_params,
                          scenario=scenario,
                          simulator=simulator,
-                         observation_list=observation_list)
+                         observation_list=observation_list,
+                         monitor_rl=monitor_rl)
 
     @property
     def action_space(self):

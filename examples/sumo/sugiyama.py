@@ -55,7 +55,9 @@ def sugiyama_example(render=None):
         net_params=net_params,
         initial_config=initial_config)
 
-    env = AccelEnv(env_params, sim_params, scenario)
+    env = AccelEnv(env_params=env_params,
+                   sim_params=sim_params,
+                   scenario=scenario)
 
     return Experiment(env)
 
@@ -65,4 +67,4 @@ if __name__ == "__main__":
     exp = sugiyama_example()
 
     # run for a set number of rollouts / time steps
-    exp.run(1, 1500, 'id', 'CO', 'NOx', convert_to_csv=True)
+    exp.run(1, 1500)

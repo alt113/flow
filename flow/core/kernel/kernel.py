@@ -73,17 +73,13 @@ class Kernel(object):
         if simulator == "traci":
             self.simulation = TraCISimulation(self)
             self.scenario = TraCIScenario(self, sim_params)
-            if observation_list:
-                self.vehicle = TraCIVehicle(self,
-                                            sim_params=sim_params,
-                                            observation_list=observation_list,
-                                            monitor_rl=monitor_rl)
-            else:
-                self.vehicle = TraCIVehicle(self,
-                                            sim_params=sim_params,
-                                            monitor_rl=monitor_rl)
+            self.vehicle = TraCIVehicle(self,
+                                        sim_params=sim_params,
+                                        observation_list=observation_list,
+                                        monitor_rl=monitor_rl)
 
             self.traffic_light = TraCITrafficLight(self)
+
         elif simulator == 'aimsun':
             self.simulation = AimsunKernelSimulation(self)
             self.scenario = AimsunKernelScenario(self, sim_params)
